@@ -22,18 +22,13 @@ public class Main {
 		Factory factory = new Factory();
 		Filter filter = factory.getFilter(num);
 		try (BufferedReader filer = new BufferedReader(new FileReader(file))) {
-			for(line = filer.readLine(); line !=null; line = filer.readLine()) {
-				if (filter.accept(line)) 
-					System.out.println(line);
-			}
-			/*
 			line = filer.readLine();
 			while(line != null) {
 				if (filter.accept(line)) 
 					System.out.println(line);
 				line = filer.readLine();
-			 */
-		}
-	}
+            }
+        }
+    }
 
 }
