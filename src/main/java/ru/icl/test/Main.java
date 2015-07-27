@@ -18,16 +18,21 @@ public class Main {
 		System.out.println("Фильтр №1 - на экране печатаются только те строки файла где нету слова Путин");
 		System.out.println("Фильтр №2 - на экране печатаются только те строки файла где есть слова Путин, но нет слома Медведев");
 		System.out.print("Введите номер фильтра: ");
-		num = System.in.read();	
+		num = System.in.read();
+		Factory factory = new Factory();
+		Filter filter = factory.getFilter(num);
 		try (BufferedReader filer = new BufferedReader(new FileReader(file))) {
-			Factory factory = new Factory();
-			Filter filter = factory.getFilter(num);
-			do {
-				line = filer.readLine();
+			for(line = filer.readLine(); line !=null; line = filer.readLine()) {
 				if (filter.accept(line)) 
 					System.out.println(line);
-			}		
-			while(line != null);
+			}
+			/*
+			line = filer.readLine();
+			while(line != null) {
+				if (filter.accept(line)) 
+					System.out.println(line);
+				line = filer.readLine();
+			 */
 		}
 	}
 
